@@ -2,46 +2,128 @@
 Source Constants
 ================
 
+``source_constants`` is an extension of the MongoDB Documentation Project
+that allows you to define constant variables for use in text. The variables
+are replaced before docutils parses the page for rendering. 
+
+Procedure
+---------
+.. procedure::
+  .. step::
+    If the repository uses snooty, define source constants in ``snooty.toml`` in the form
+    ``variable-name = "value"``.
+
+    .. code-block:: toml
+
+    [constants]
+    package-branch = "testing"
+    package-version = "4.4.0"
+    package-name-org = "mongodb-org"
+
+    If the repository doesn't use snooty, make the following changes in ``conf.py``:
+
+    .. procedure::
+      .. step::
+        Add ``'source_constants'`` to the ``extensions`` list.
+
+        .. code-block:: python
+
+          extensions = [
+            'directives',
+            'mongodb',
+            'source_constants',
+          ]
+
+      .. step::
+        Define source constants in ``source_constants`` dict in the form 
+        ``'variable-name': 'variable-value'``:
+
+        .. code-block:: python
+
+          source_constants = {
+            'package-branch': 'testing',
+            'package-version': '4.4'
+            'package-name-org': 'mongodb-org',
+          }
+
+Use Source Constants
+--------------------
+
+Refer to a source constant in a restructuredText file using the syntax
+ ``{\+variable-name+}``. 
+
+.. code-block:: rst
+
+  You are working on version {+package-version+} of the package {+package-name-org+}.
+  Currently on branch {+package-branch+}.
+
+Rendered View
+~~~~~~~~~~~~~
+You are working on version {+version+} of the package {+package-name-org+}.
+Currently on branch {+package-branch+}.
+
+Substitutions
+-------------
+
 The `substitutions
 <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`__
 built into restructuredText have a number of limitations and quirks.
 For example, they cannot be used to substitute content inside of code
 blocks, and cannot contain links.
 
-The MongoDB Documentation Project has an extension called
-``source_constants`` which allows you to substitute constants anywhere
-in a page *before* docutils begins its parse stage.
+RestructuredText supports text replacements from variables. These are called
+_substitutions_. Substitutions can be declared at any point in a
+document.
 
-Example
--------
+.. Sphinx further supports placing multiple Substitutions in the
+.. :sphinx:`rst_epilog </usage/configuration.html#confval-rst_epilog>` of
+.. the configuration file. This Sphinx variable array renders as a string
+.. of |rst| with all Substitutions at the end of every page.
 
-In your ``conf.py``, add ``'source_constants'`` to the ``extensions``
-list, and define a ``source_constants`` dict:
+.. .. caution::
 
-.. code-block:: python
-   :linenos:
+..    If you don't include a single blank line at the end of your RestructuredText
+..    file, the Substitution `rst_epilog` generates one build error for
+..    every Substitution defined in that file.
 
-   source_constants = {
-       'package-branch': 'testing',
-       'package-name-org': 'mongodb-org',
-       'version': version
-   }
+Use Substitutions with the following guidelines:
 
-You may then use these constants in your restructuredText files:
+.. - Do not include Substitutions in
+..   :doc:`Headings </style-guide/markup/format/headings>`. The text that
+..   replaces the Substitution may be longer than the underline and
+..   result in a build error.
 
-.. code-block:: rst
+.. - Add your Substitution to the
+..   :sphinx:`rst_epilog </usage/configuration.html#confval-rst_epilog>`
+..   array in the `conf.py` file if you plan to use it in more than one
+..   page. The most common error when adding to the `rst_epilog` is
+..   forgetting to end the line with a comma (``,``).
 
-   Create the
-   ``/etc/apt/sources.list.d/mongodb-org-{+package-version+}.list``
-   list file using the command appropriate for your version of Ubuntu:
+- Do not include a Substitution within inline formatting or links. It
+  doesn't render and generates a build error.
 
-   .. code-block:: sh
+  .. list-table::
+     :header-rows: 1
+     :widths: 50 50
 
-      echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu \
-           trusty/mongodb-org/{+package-branch+} multiverse" \
-           | sudo tee /etc/apt/sources.list.d/mongodb-org-{+version+}.list
+     * - Use
+       - Avoid
 
-Comparison with Other Variable Syntaxes
+     * -
+
+         .. code-block:: rst
+
+            :guilabel:`Using restructuredText`
+
+       -
+
+         .. code-block:: rst
+            :copyable: false
+
+            :guilabel:`Using |rst|`
+
+
+Comparison of Variable Syntaxes
 ---------------------------------------
 
 .. list-table::
