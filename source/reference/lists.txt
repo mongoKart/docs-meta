@@ -23,6 +23,8 @@ starting a line with ``#.``, or by using a number followed by a ``.``. Using
      - Result
 
    * - .. literalinclude:: /includes/ordered-list-auto-example.rst
+       :copyable: false
+
      - .. include:: /includes/ordered-list-auto-example.rst
 
 .. list-table::
@@ -33,6 +35,8 @@ starting a line with ``#.``, or by using a number followed by a ``.``. Using
      - Result
 
    * - .. literalinclude:: /includes/ordered-list-numbered-example.rst
+       :copyable: false
+
      - .. include:: /includes/ordered-list-numbered-example.rst
 
 Unordered Lists
@@ -49,6 +53,8 @@ unordered list by starting a line with ``-`` or ``*``.
      - Result
 
    * - .. literalinclude:: /includes/unordered-list-dashed-example.rst
+       :copyable: false
+
      - .. include:: /includes/unordered-list-dashed-example.rst
 
 .. list-table::
@@ -59,6 +65,8 @@ unordered list by starting a line with ``-`` or ``*``.
      - Result
 
    * - .. literalinclude:: /includes/unordered-list-asterisk-example.rst
+       :copyable: false
+
      - .. include:: /includes/unordered-list-asterisk-example.rst
 
 Nested Lists
@@ -77,6 +85,8 @@ the text of the parent list.
      - Result
 
    * - .. literalinclude:: /includes/nested-list-example.rst
+       :copyable: false
+
      - .. include:: /includes/nested-list-example.rst
 
 For more guidelines on lists, see :ref:`lists`.
