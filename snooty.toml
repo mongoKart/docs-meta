@@ -22,4 +22,5 @@ version = "4.0"
 
 [substitutions]
 mdbsg = "MongoDB Style Guide"
-code-example = "{+variable-name+}"
+code-example = "+variable-name+"
+test-variabel = "test value"
