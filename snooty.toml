@@ -19,7 +19,7 @@ package-branch = "testing"
 package-version = "4.4.0"
 package-name-org = "mongodb-org"
 version = "4.0"
-code-example = "{+variable-name+}"
+code-example = "sample constant"
 
 [substitutions]
 mdbsg = "MongoDB Style Guide"
