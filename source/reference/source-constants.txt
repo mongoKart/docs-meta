@@ -9,18 +9,20 @@ are replaced before docutils parses the page for rendering.
 Procedure
 ---------
 .. procedure::
-  .. step::
+   :style: normal
+
+   .. step::
     If the repository uses snooty, define source constants in ``snooty.toml`` in the form
     ``variable-name = "value"``.
 
-    .. code-block:: toml
+    .. code-block:: none
 
-    [constants]
-    package-branch = "testing"
-    package-version = "4.4.0"
-    package-name-org = "mongodb-org"
+       [constants]
+       package-branch = "testing"
+       package-version = "4.4.0"
+       package-name-org = "mongodb-org"
 
-    If the repository doesn't use snooty, make the following changes in ``conf.py``:
+    If the repository doesn't use snooty, make the following changes in ``conf.py``.
 
     .. procedure::
       .. step::
@@ -35,8 +37,8 @@ Procedure
           ]
 
       .. step::
-        Define source constants in ``source_constants`` dict in the form 
-        ``'variable-name': 'variable-value'``:
+        Define source constants in the ``source_constants`` dict. Use the form 
+        ``'variable-name': 'variable-value'``.
 
         .. code-block:: python
 
@@ -49,13 +51,16 @@ Procedure
 Use Source Constants
 --------------------
 
-Refer to a source constant in a restructuredText file using the syntax
- ``{\+variable-name+}``. 
+To refer to a source constant in restructuredText, use the following syntax:
+
+.. code-block:: none
+
+  \{+variable-name+\}
 
 .. code-block:: rst
 
-  You are working on version {+package-version+} of the package {+package-name-org+}.
-  Currently on branch {+package-branch+}.
+  You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
+  Currently on branch \{+package-branch+\}.
 
 Rendered View
 ~~~~~~~~~~~~~
