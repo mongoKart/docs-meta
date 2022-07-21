@@ -57,12 +57,14 @@ To refer to a source constant in restructuredText, use the following syntax:
 
 .. code-block:: none
 
-  {+code-example+}
+  |code-example|
 
 .. code-block:: rst
 
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
+
+Code example test: |code-example|
 
 Rendered View
 ~~~~~~~~~~~~~
