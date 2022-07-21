@@ -66,8 +66,6 @@ To refer to a source constant in restructuredText, use the following syntax:
 
 | Test two: |code-example-two|
 | Test three: |code-example-three|
-| Test five: ``|code-example-two|``
-| Test six: ``|code-example-three|``
 
 Rendered View
 ~~~~~~~~~~~~~
