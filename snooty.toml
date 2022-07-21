@@ -19,7 +19,7 @@ package-branch = "testing"
 package-version = "4.4.0"
 package-name-org = "mongodb-org"
 version = "4.0"
-constant-test = "\\{+variable-name\\+}"
+constant-test = "\\{+variable-name+\\}"
 
 [substitutions]
 mdbsg = "MongoDB Style Guide"

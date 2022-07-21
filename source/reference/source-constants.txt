@@ -65,7 +65,10 @@ To refer to a source constant in restructuredText, use the following syntax:
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
 
-Sub test: ``|code-example|``
+| Constant test: ``{+constant-test+}``
+| Test two: **{+constant-test+}**
+| Test three: **|code-example|**
+| Test four: |code-example|
 
 Rendered View
 ~~~~~~~~~~~~~
