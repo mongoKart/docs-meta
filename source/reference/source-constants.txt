@@ -58,14 +58,14 @@ To refer to a source constant in restructuredText, use the following syntax:
 .. code-block:: none
 
   \\{+variable-name+\\}
+  {+constant-test+}
 
 .. code-block:: rst
 
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
 
-| Test two: |code-example-two|
-| Test three: |code-example-three|
+Sub test: ``|code-example|``
 
 Rendered View
 ~~~~~~~~~~~~~
