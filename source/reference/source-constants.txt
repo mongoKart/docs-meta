@@ -53,12 +53,13 @@ Procedure
     Use the source constant in text with the syntax ``{+variable-name+}``.
 
    .. step::
-    Attempt 2: {+variable-name+}
-    Attempt 3: **{+constant-test+}**
-    Attempt 4: |code-example|
-    Attempt 5: **{+variable-name+}**
-    Attempt 6: ``{+constant-test}+``
-    Attempt 7: ``|code-example|``
+    Attempt 6: ``{+constant-test+}``
+
+..     .. Attempt 2: {+variable-name+} - BLANK
+..     Attempt 5: **{+variable-name+}** - BLANK
+..     Attempt 7: ``|code-example|`` - |code-example|
+..     Attempt 4: |code-example| - sub value, plaintext
+..        Attempt 3: **{+constant-test+}** - constant value, bold
 
 Example
 -------
