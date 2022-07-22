@@ -50,11 +50,7 @@ Procedure
             'package-name-org': 'mongodb-org',
           }
    .. step::
-    Use the source constant in text with the syntax {+constant-test+} or the syntax
-    |code-example| or **{+constant-test+}** or **|code-example|**.
-
-   .. step::
-    Attempt 6: ``{+constant-test+}``
+    Use the source constant in text with the syntax **{+constant-test+}**. 
 
 ..     .. Attempt 2: {+variable-name+} - BLANK
 ..     Attempt 5: **{+variable-name+}** - BLANK
@@ -69,6 +65,11 @@ Example
 
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
+
+.. code-block:: rst
+
+  You are working on version ``{+package-version+}`` of the package {+constant-test+}.
+  Currently on branch |code-example|.
 
 .. | Constant test: ``{+constant-test+}``
 .. | Test two: **{+constant-test+}**
