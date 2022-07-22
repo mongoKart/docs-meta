@@ -61,10 +61,12 @@ Procedure
 Example
 -------
 
-.. code-block:: rst
-
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
+
+  You are working on version {+package-version-code+} of the package 
+  {+package-name-org-code+}.
+  Currently on branch {+package-branch-code+}.
 
 .. code-block:: rst
 
