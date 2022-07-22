@@ -52,6 +52,12 @@ Procedure
    .. step::
     Use the source constant in text with the syntax ``{+variable-name+}``.
 
+   .. step::
+    Attempt 2: {+variable-name+}
+    Attempt 3: **{+constant-test+}**
+    Attempt 4: |code-example|
+    Attempt 5: **{+variable-name+}**
+
 Example
 -------
 
