@@ -50,7 +50,8 @@ Procedure
             'package-name-org': 'mongodb-org',
           }
    .. step::
-    Use the source constant in text with the syntax ``{+variable-name+}``.
+    Use the source constant in text with the syntax {+constant-test+} or the syntax
+    |code-example| or **{+constant-test+}** or **|code-example|**.
 
    .. step::
     Attempt 6: ``{+constant-test+}``
