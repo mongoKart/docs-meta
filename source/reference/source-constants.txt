@@ -57,6 +57,8 @@ Procedure
     Attempt 3: **{+constant-test+}**
     Attempt 4: |code-example|
     Attempt 5: **{+variable-name+}**
+    Attempt 6: ``{+constant-test}+``
+    Attempt 7: ``|code-example|``
 
 Example
 -------
