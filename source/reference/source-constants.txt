@@ -52,7 +52,7 @@ There are two ways to define source constants.
             'package-name-org': 'mongodb-org',
           }
 
-After you've declared a source constant, use it in text with the syntax 
+After you've defined a source constant, use it in text with the syntax 
 ``{+constant-test+}``.
 
 ..     .. Attempt 2: {+variable-name+} - BLANK
