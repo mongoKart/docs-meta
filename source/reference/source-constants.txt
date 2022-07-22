@@ -11,6 +11,7 @@ are replaced before docutils parses the page for rendering.
 Procedure
 ---------
 There are two ways to define source constants.
+
 .. procedure::
    :style: normal
 
@@ -67,12 +68,6 @@ Example
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
 
-.. | Constant test: ``{+constant-test+}``
-.. | Test two: **{+constant-test+}**
-| Test four: |code-example|
-| Another test: ``|code-example|``
-| Still another: ``{+variable-name+}``
-
 Rendered View
 ~~~~~~~~~~~~~
 You are working on version {+package-version+} of the package {+package-name-org+}.
@@ -119,26 +114,27 @@ There are two ways to define substitutions.
         '.. |package-name-org| replace:: mongodb-org',
       ])
 
-      .. caution::
+    .. caution::
 
-        If you don't include a single blank line at the end of your RestructuredText
-        file, the Substitution `rst_epilog` generates one build error for
-        every Substitution defined in that file.
+      If you don't include a single blank line at the end of your RestructuredText
+      file, `rst_epilog` generates one build error for
+      every substitution defined in that file.
+
+After you've defined a substitution, use it in text with the syntax 
+``|variable-name|``.
 
 Example
 -------
 
-You are working on version ``|example|`` of the package \{+package-name-org+\}.
-Currently on branch \{+package-branch+\}.
+.. code-block:: rst
+
+  You are working on version |package-version| of the package |package-name-org|.
+  Currently on branch |package-branch|.
 
 Rendered View
 ~~~~~~~~~~~~~
-
-
-
- Substitutions can be declared at any point in a
-document.
-
+You are working on version |package-version| of the package |package-name-org|.
+Currently on branch |package-branch|.
 
 Guidelines
 ----------
@@ -150,7 +146,6 @@ Guidelines
   :doc:`Headings </style-guide/markup/format/headings>`. The text that
   replaces the Substitution may be longer than the underline and
   result in a build error.
-
 
 
 Comparison of Variable Syntaxes

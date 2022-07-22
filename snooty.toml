@@ -23,4 +23,6 @@ constant-test = "\\{+variable-name+\\}"
 
 [substitutions]
 mdbsg = "MongoDB Style Guide"
-example = "testing"
+package-branch = "testing"
+package-name-org = "mongodb-org"
+package-version = "4.4.0"
