@@ -10,12 +10,13 @@ are replaced before docutils parses the page for rendering.
 
 Procedure
 ---------
+There are two ways to define source constants.
 .. procedure::
    :style: normal
 
    .. step::
-    If the repository uses snooty, define source constants in ``snooty.toml`` in the form
-    ``variable-name = "value"``.
+    If the repository uses snooty, define source constants in ``snooty.toml`` under the
+    ``[constants]`` heading. Use the form ``variable-name = "value"``.
 
     .. code-block:: none
 
@@ -24,7 +25,8 @@ Procedure
        package-version = "4.4.0"
        package-name-org = "mongodb-org"
 
-    If the repository doesn't use snooty, make the following changes in ``conf.py``.
+   .. step::
+    If the repository does **not** use snooty, make the following changes in ``conf.py``.
 
     .. procedure::
       .. step::
@@ -49,8 +51,9 @@ Procedure
             'package-version': '4.4'
             'package-name-org': 'mongodb-org',
           }
-   .. step::
-    Use the source constant in text with the syntax **{+constant-test+}**. 
+
+After you've declared a source constant, use it in text with the syntax 
+``{+constant-test+}``.
 
 ..     .. Attempt 2: {+variable-name+} - BLANK
 ..     Attempt 5: **{+variable-name+}** - BLANK
@@ -64,15 +67,6 @@ Example
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
 
-  You are working on version {+package-version-code+} of the package 
-  {+package-name-org-code+}.
-  Currently on branch {+package-branch-code+}.
-
-.. code-block:: rst
-
-  You are working on version ``{+package-version+}`` of the package {+constant-test+}.
-  Currently on branch {+constant-one-slash+}.
-
 .. | Constant test: ``{+constant-test+}``
 .. | Test two: **{+constant-test+}**
 | Test four: |code-example|
@@ -81,68 +75,82 @@ Example
 
 Rendered View
 ~~~~~~~~~~~~~
-You are working on version {+version+} of the package {+package-name-org+}.
+You are working on version {+package-version+} of the package {+package-name-org+}.
 Currently on branch {+package-branch+}.
 
+=============
 Substitutions
--------------
+=============
 
-The `substitutions
+Before creating source constants, we used the `substitutions
 <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`__
-built into restructuredText have a number of limitations and quirks.
-For example, they cannot be used to substitute content inside of code
-blocks, and cannot contain links.
+built into restructuredText. Substitutions are similar to source constants but have more
+restrictions. Substitution variables are replaced while docutils is parsing the 
+page for rendering. 
 
-RestructuredText supports text replacements from variables. These are called
-_substitutions_. Substitutions can be declared at any point in a
+
+Procedure
+---------
+There are two ways to define substitutions.
+
+.. procedure::
+  :style: normal
+
+  .. step::
+    If the repository uses snooty, define substitutions in ``snooty.toml`` under the
+    ``[substitutions]`` heading. Use the form ``variable-name = "value"``.
+
+    .. code-block:: none
+
+       [substitutions]
+       package-branch = "testing"
+       package-version = "4.4.0"
+       package-name-org = "mongodb-org"
+  
+  .. step::
+    If the repository does **not** use snooty, define substitutions in the ``rst_epilog``
+    variable in ``conf.py``. Use the form ``'.. |variable-name| replace:: value'``.
+
+    .. code-block:: python
+
+      rst_epilog = '\n'.join([
+        '.. |package-branch| replace:: testing',
+        '.. |package-version| replace:: 4.4.0',
+        '.. |package-name-org| replace:: mongodb-org',
+      ])
+
+      .. caution::
+
+        If you don't include a single blank line at the end of your RestructuredText
+        file, the Substitution `rst_epilog` generates one build error for
+        every Substitution defined in that file.
+
+Example
+-------
+
+You are working on version ``|example|`` of the package \{+package-name-org+\}.
+Currently on branch \{+package-branch+\}.
+
+Rendered View
+~~~~~~~~~~~~~
+
+
+
+ Substitutions can be declared at any point in a
 document.
 
-.. Sphinx further supports placing multiple Substitutions in the
-.. :sphinx:`rst_epilog </usage/configuration.html#confval-rst_epilog>` of
-.. the configuration file. This Sphinx variable array renders as a string
-.. of |rst| with all Substitutions at the end of every page.
 
-.. .. caution::
+Guidelines
+----------
 
-..    If you don't include a single blank line at the end of your RestructuredText
-..    file, the Substitution `rst_epilog` generates one build error for
-..    every Substitution defined in that file.
-
-Use Substitutions with the following guidelines:
-
-.. - Do not include Substitutions in
-..   :doc:`Headings </style-guide/markup/format/headings>`. The text that
-..   replaces the Substitution may be longer than the underline and
-..   result in a build error.
-
-.. - Add your Substitution to the
-..   :sphinx:`rst_epilog </usage/configuration.html#confval-rst_epilog>`
-..   array in the `conf.py` file if you plan to use it in more than one
-..   page. The most common error when adding to the `rst_epilog` is
-..   forgetting to end the line with a comma (``,``).
-
-- Do not include a Substitution within inline formatting or links. It
+- Do not include a substitution within inline formatting or links. It
   doesn't render and generates a build error.
+- Substitutions will not substitute content inside of code blocks.
+- Do not include Substitutions in
+  :doc:`Headings </style-guide/markup/format/headings>`. The text that
+  replaces the Substitution may be longer than the underline and
+  result in a build error.
 
-  .. list-table::
-     :header-rows: 1
-     :widths: 50 50
-
-     * - Use
-       - Avoid
-
-     * -
-
-         .. code-block:: rst
-
-            :guilabel:`Using restructuredText`
-
-       -
-
-         .. code-block:: rst
-            :copyable: false
-
-            :guilabel:`Using |rst|`
 
 
 Comparison of Variable Syntaxes
