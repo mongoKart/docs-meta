@@ -49,27 +49,22 @@ Procedure
             'package-version': '4.4'
             'package-name-org': 'mongodb-org',
           }
+   .. step::
+    Use the source constant in text with the syntax ``{+variable-name+}``.
 
-Use Source Constants
---------------------
-
-To refer to a source constant in restructuredText, use the following syntax:
-
-.. code-block:: none
-
-  \\{+variable-name+\\}
-  {+constant-test+}
+Example
+-------
 
 .. code-block:: rst
 
   You are working on version \{+package-version+\} of the package \{+package-name-org+\}.
   Currently on branch \{+package-branch+\}.
 
-| Constant test: ``{+constant-test+}``
-| Test two: **{+constant-test+}**
+.. | Constant test: ``{+constant-test+}``
+.. | Test two: **{+constant-test+}**
 | Test four: |code-example|
 | Another test: ``|code-example|``
-| Still another: ``{+variable name+}``
+| Still another: ``{+variable-name+}``
 
 Rendered View
 ~~~~~~~~~~~~~
