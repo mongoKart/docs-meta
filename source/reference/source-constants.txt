@@ -69,7 +69,7 @@ Example
 .. code-block:: rst
 
   You are working on version ``{+package-version+}`` of the package {+constant-test+}.
-  Currently on branch |code-example|.
+  Currently on branch {+constant-one-slash+}.
 
 .. | Constant test: ``{+constant-test+}``
 .. | Test two: **{+constant-test+}**
